@@ -7,6 +7,7 @@ class nueralNetwork:
 
         #learning factor - ⍺
         self.lf = learningFactor
+        self.display()
         pass
 
     #query the data
@@ -15,6 +16,13 @@ class nueralNetwork:
 
     #train the nueral network
     def train(self):
+        pass
+
+    def display(self):
+        print ("input Nodes:" + str(self.inputNodes))
+        print("hidden Nodes:" + str(self.hiddenNodes))
+        print("output Nodes:" + str(self.outputNodes))
+        print ("learning factor:" + str(self.lf))
         pass
     
         
