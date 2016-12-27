@@ -6,7 +6,7 @@
 - outputNodes = 3
 - learningFactor = 0.1
 - nueralNetwork = nueralNetwork(inputNodes, hiddenLayerNodes, outputNodes, learningFactor)
-##TO - DO
+- TO - DO
 - [x] write skeleton of class
 - [x] write display function for testing purposes
 - [x] add numpy to package
