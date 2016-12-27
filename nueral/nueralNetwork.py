@@ -1,4 +1,6 @@
 import numpy
+import scipy.special
+
 class nueralNetwork:
     #nueral network initializer
     def __init__(self, numInputNodes, numHiddenNodes, numOutputNodes, learningFactor):
@@ -20,14 +22,26 @@ class nueralNetwork:
 
         #more sophisticated weights
         #sample the weights from a normal dist. with mean = 0 and std. deviation = (# of incoming links)^(-1/2)
-        #self.wih = (numpy.random.normal(0.0, pow (self.hiddenNodes, -0.5), self.inputNodes, self.hiddenNodes)
+        #   self.wih = (numpy.random.normal(0.0, pow (self.hiddenNodes, -0.5), self.inputNodes, self.hiddenNodes)
         #self.woh = (numpy.random.normal(0.0, pow(self.hiddenNodes,-0.5), self.hiddenNodes, self.outputNodes)
+        #activation function
+        self.activationFunction = lambda x : scipy.special.expit(x)
         self.display()
         pass
 
     #query the data
-    def query(self):
-        pass
+    def query(self,inputsList):
+        inputs = numpy.array(inputsList, ndmin = 2).T
+        #send input signals through wih
+        hiddenInputs = numpy.dot(self.wih,inputs)
+        #apply activation function
+        hiddenOutputs = self.activationFunction(hiddenInputs)
+        #send signals through woh
+        finalInputs = numpy.dot(self.woh,inputs)
+        #apply activation function
+        finalOutputs = self.activationFunction(finalInputs)
+        return finalOutputs
+
 
     #train the nueral network
     def train(self):
