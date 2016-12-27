@@ -17,6 +17,11 @@ class nueralNetwork:
         self.wih=(numpy.random.rand(self.hiddenNodes, self.inputNodes)-0.5)
         #A matrix for the link weights between input and hidden layers; Whidden_output of size(hiddenNodes x outputNodes)
         self.woh=(numpy.random.rand(self.outputNodes, self.hiddenNodes)-0.5)
+
+        #more sophisticated weights
+        #sample the weights from a normal dist. with mean = 0 and std. deviation = (# of incoming links)^(-1/2)
+        #self.wih = (numpy.random.normal(0.0, pow (self.hiddenNodes, -0.5), self.inputNodes, self.hiddenNodes)
+        #self.woh = (numpy.random.normal(0.0, pow(self.hiddenNodes,-0.5), self.hiddenNodes, self.outputNodes)
         self.display()
         pass
 
@@ -34,7 +39,7 @@ class nueralNetwork:
         print("output Nodes:" + str(self.outputNodes))
         print ("learning factor:" + str(self.lf))
         print(self.wih)
-        print(self.woh)
+        print(self.nowoh)
         pass
     
         
