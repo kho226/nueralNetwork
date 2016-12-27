@@ -18,7 +18,7 @@ class nueralNetwork:
         #A matrix for the link weights between input and hidden layers; Winput_hidden of size (inputNodes x hiddenNodesnode)
         self.wih=(numpy.random.rand(self.hiddenNodes, self.inputNodes)-0.5)
         #A matrix for the link weights between input and hidden layers; Whidden_output of size(hiddenNodes x outputNodes)
-        self.woh=(numpy.random.rand(self.outputNodes, self.hiddenNodes)-0.5)
+        self.who=(numpy.random.rand(self.outputNodes, self.hiddenNodes)-0.5)
 
         #more sophisticated weights
         #sample the weights from a normal dist. with mean = 0 and std. deviation = (# of incoming links)^(-1/2)
@@ -37,14 +37,31 @@ class nueralNetwork:
         #apply activation function
         hiddenOutputs = self.activationFunction(hiddenInputs)
         #send signals through woh
-        finalInputs = numpy.dot(self.woh,inputs)
+        finalInputs = numpy.dot(self.who,inputs)
         #apply activation function
         finalOutputs = self.activationFunction(finalInputs)
         return finalOutputs
 
 
     #train the nueral network
-    def train(self):
+    def train(self, inputsList, targetsList):
+        inputs = numpy.array(inputsList, ndmin = 2).T
+        #send input signals through wih
+        hiddenInputs = numpy.dot(self.wih,inputs)
+        #apply activation function
+        hiddenOutputs = self.activationFunction(hiddenInputs)
+        #send signals through woh
+        finalInputs = numpy.dot(self.who,inputs)
+        #apply activation function
+        finalOutputs = self.activationFunction(finalInputs)
+        
+
+        #create 2d array from targetsList
+        targetsList = numpy.array(targetsList,ndmin = 2).T
+        errorList = targetsList - finalOutputs
+        #propogate error backwards by multiply error matrix by the transpose of the matrices of link weights, who
+        hiddenErrors = numpy.dot(self.who.T, errorList)
+        self.who = self.lr * numpy.dot(hiddenErrors * finalOutputs * (1.0 - finalOutputs), numpy.transpose(hiddenOutputs))
         pass
 
     def display(self):
