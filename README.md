@@ -14,3 +14,5 @@
 - [x] add scipy to the package
 - [x] write query method
 - [x] write train method
+- [x] updated GUI
+- [x] added main function

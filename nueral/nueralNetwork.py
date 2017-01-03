@@ -73,7 +73,7 @@ class nueralNetwork:
         print("output Nodes:" + str(self.outputNodes))
         print ("learning factor:" + str(self.lf))
         print(self.wih)
-        print(self.woh)
+        print(self.who)
         pass
-    
+
         
