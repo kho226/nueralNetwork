@@ -61,7 +61,10 @@ class nueralNetwork:
         errorList = targetsList - finalOutputs
         #propogate error backwards by multiply error matrix by the transpose of the matrices of link weights, who
         hiddenErrors = numpy.dot(self.who.T, errorList)
-        self.who = self.lr * numpy.dot(hiddenErrors * finalOutputs * (1.0 - finalOutputs), numpy.transpose(hiddenOutputs))
+        #update the weights for the links between the hidden and output layers
+        self.who += self.lr * numpy.dot((hiddenErrors * finalOutputs * (1.0 - finalOutputs)), numpy.transpose(hiddenOutputs))
+        #update the weights for the links between the input and hidden layers
+        self.wih += self.lr * numpy.dot ((hiddenErrors * hiddenOutputs * (1.0 - hiddenOutputs)), numpy.transpose(inputs))
         pass
 
     def display(self):
