@@ -17,4 +17,4 @@
 - [x] updated GUI
 - [x] added main function
 
-![Alt text](/screenshots/usage.jpg?raw=true "Usage")
+![Alt text](/screenshots/usage.png?raw=true "Usage")
