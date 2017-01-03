@@ -13,4 +13,4 @@
 - [x] updated initializer to randomly select link weights based off of the normal distribution with mean = 0 and standard deviation = (# of incoming links to a node)^(-1/2)
 - [x] add scipy to the package
 - [x] write query method
-- [ ] write train method
+- [x] write train method
