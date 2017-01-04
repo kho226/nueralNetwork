@@ -14,3 +14,6 @@
 - [x] added main function
 
 ![Alt text](/screenshots/usage.png?raw=true "Usage")
+
+#Jupyter / IPython quickstart
+- http://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/install.html
