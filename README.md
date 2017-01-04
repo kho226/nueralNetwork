@@ -1,4 +1,4 @@
-# nueralNetwork
+# NueralNetwork
 ## A nueral network built with the purpose of recognizing handwritten letters.
 ###### TODO...
 
@@ -15,5 +15,5 @@
 
 ![Alt text](/screenshots/usage.png?raw=true "Usage")
 
-#Jupyter / IPython quickstart
-- http://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/install.html
+# [Jupyter / IPython quickstart](http://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/install.html)
+> moved development to Jupyter / IPython since the Python IDLE does not support matplotlib interactive updates
