@@ -36,6 +36,7 @@ def main ():
         #reshapex(z,y) -> modifier that transforms an array into an z X y array
         #imageArray = numpy.asfarray(splitVals[1:]).reshape((28,28))
         #matplotlib.pyplot.imshow(imageArray, cmap = "Greys", interpolation = 'None')
+        #scaled inputs from 0.01 - 0.99 in order to avoid artificially killing weights and to target the output range of the activation function
         scaledInput = (numpy.asfarray(splitVals[1:]) / 255.00 * 0.99) + 0.01
         print (scaledInput)
         
