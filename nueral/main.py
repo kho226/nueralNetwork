@@ -34,9 +34,10 @@ def main ():
         #take all except the first element of the list [1:], effectively ignoring the first label value
         #numpy.asfarray() -> creates a new array of real numbers from an array of text strings
         #reshapex(z,y) -> modifier that transforms an array into an z X y array
-        imageArray = numpy.asfarray(splitVals[1:]).reshape((28,28))
-        print (imageArray)
-        matplotlib.pyplot.imshow(imageArray, cmap = "Greys", interpolation = 'None')
+        #imageArray = numpy.asfarray(splitVals[1:]).reshape((28,28))
+        #matplotlib.pyplot.imshow(imageArray, cmap = "Greys", interpolation = 'None')
+        scaledInput = (numpy.asfarray(splitVals[1:]) / 255.00 * 0.99) + 0.01
+        print (scaledInput)
         
          
     
