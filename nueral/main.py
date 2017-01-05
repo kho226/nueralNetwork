@@ -8,7 +8,6 @@ import numpy
 def main ():
        
         print ("Enter the dimensions for your network...")
-        print ("As of now the only supported dimension is 3x3.")
         numInputNodes = int(input("Rows: "))
         numHiddenNodes = int(input("Columns: "))
         print ("Enter a learning - factor for your network...")
@@ -19,12 +18,23 @@ def main ():
         filePath = Path(userInput) 
         print (filePath)
         dataList = []
+        splitVals = []
         if filePath.is_file():
             dataFile = open(userInput, 'r')
             dataList = dataFile.readlines()
             dataFile.close()
         else:
             print (str(filePath) + " does not exist")
+        for record in dataList:
+                #split the record by commas
+                splitVals = record.split(',')
+                #scale and shift the inputs
+                scaledInputs = (numpy.asfarray(splitVals[1:]) / 255.0 * 0.99) + 0.01
+                #create the target output values (all 0.01, except the desired label which is 0.99)
+                targets = numpy.zeros(output_nodes) + 0.01
+                targets[int(splitVals[0])] = 0.99
+                nueralNet.train(scaledInputs,targets)
+                pass
         #testing purposes
         #print ("printing out the first value in dataList, the pixel color values associated with the first value, and the length of dataList.")
         #print (dataList[0])
@@ -37,11 +47,7 @@ def main ():
         #imageArray = numpy.asfarray(splitVals[1:]).reshape((28,28))
         #matplotlib.pyplot.imshow(imageArray, cmap = "Greys", interpolation = 'None')
         #scaled inputs from 0.01 - 0.99 in order to avoid artificially killing weights and to target the output range of the activation function
-        scaledInput = (numpy.asfarray(splitVals[1:]) / 255.00 * 0.99) + 0.01
-        print (scaledInput)
-        
-         
-    
+
 if __name__ == '__main__':
         main()
 
