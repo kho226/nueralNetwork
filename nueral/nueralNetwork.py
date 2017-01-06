@@ -1,79 +1,89 @@
 import numpy
 import scipy.special
 
-class nueralNetwork:
-    #nueral network initializer
-    def __init__(self, numInputNodes, numHiddenNodes, numOutputNodes, learningFactor):
-        self.inputNodes = numInputNodes
-        self.hiddenNodes = numHiddenNodes
-        self.outputNodes = numOutputNodes
-
-        #learning factor - ⍺
-        self.lf = learningFactor
-
-        #link weights, wih and woh
+# neural network class definition
+class neuralNetwork:
+    
+    
+    # initialise the neural network
+    def __init__(self, inputNodes, hiddenNodes, outputNodes, learningRate):
+        # set number of nodes in each input, hidden, output layer
+        self.inputNodes = inputNodes
+        self.hiddenNodes = hiddenNodes
+        self.outputNodes = outputNodes
+        
+        #link weights matrices, wih and woh
         #links inside the arrays are Wij
         #the link and associated weight are from node i to node j
         #W11, W22, etc
         #A matrix for the link weights between input and hidden layers; Winput_hidden of size (inputNodes x hiddenNodesnode)
-        self.wih=(numpy.random.rand(self.hiddenNodes, self.inputNodes)-0.5)
-        #A matrix for the link weights between input and hidden layers; Whidden_output of size(hiddenNodes x outputNodes)
-        self.who=(numpy.random.rand(self.outputNodes, self.hiddenNodes)-0.5)
+        self.wih = numpy.random.normal(0.0, pow(self.hiddenNodes, -0.5), (self.hiddenNodes, self.inputNodes))
+        self.who = numpy.random.normal(0.0, pow(self.outputNodes, -0.5), (self.outputNodes, self.hiddenNodes))
 
-        #more sophisticated weights
-        #sample the weights from a normal dist. with mean = 0 and std. deviation = (# of incoming links)^(-1/2)
-        #   self.wih = (numpy.random.normal(0.0, pow (self.hiddenNodes, -0.5), self.inputNodes, self.hiddenNodes)
-        #self.woh = (numpy.random.normal(0.0, pow(self.hiddenNodes,-0.5), self.hiddenNodes, self.outputNodes)
-        #activation function
-        self.activationFunction = lambda x : scipy.special.expit(x)
+        # learning rate
+        self.lr = learningRate
+        
+        # activation function is the sigmoid function
+        self.activationFunction = lambda x: scipy.special.expit(x)
+        
         self.display()
+        
         pass
 
-    #query the data
-    def query(self,inputsList):
-        inputs = numpy.array(inputsList, ndmin = 2).T
-        #send input signals through wih
-        hiddenInputs = numpy.dot(self.wih,inputs)
-        #apply activation function
-        hiddenOutputs = self.activationFunction(hiddenInputs)
-        #send signals through woh
-        finalInputs = numpy.dot(self.who,inputs)
-        #apply activation function
-        finalOutputs = self.activationFunction(finalInputs)
-        return finalOutputs
-
-
-    #train the nueral network
+    
+    # train the neural network
     def train(self, inputsList, targetsList):
-        inputs = numpy.array(inputsList, ndmin = 2).T
-        #send input signals through wih
-        hiddenInputs = numpy.dot(self.wih,inputs)
-        #apply activation function
+        # convert inputs list to 2d array
+        inputs = numpy.array(inputsList, ndmin=2).T
+        targets = numpy.array(targetsList, ndmin=2).T
+        
+        # calculate signals into hidden layer
+        hiddenInputs = numpy.dot(self.wih, inputs)
+        # calculate the signals emerging from hidden layer
         hiddenOutputs = self.activationFunction(hiddenInputs)
-        #send signals through woh
-        finalInputs = numpy.dot(self.who,inputs)
-        #apply activation function
+        
+        # calculate signals into final output layer
+        finalInputs = numpy.dot(self.who, hiddenOutputs)
+        # calculate the signals emerging from final output layer
         finalOutputs = self.activationFunction(finalInputs)
         
-
-        #create 2d array from targetsList
-        targetsList = numpy.array(targetsList,ndmin = 2).T
-        errorList = targetsList - finalOutputs
+        # output layer error is the (target - actual)
+        outputErrors = targets - finalOutputs
+        # hidden layer error is the output_errors, split by weights, recombined at hidden nodes
         #propogate error backwards by multiply error matrix by the transpose of the matrices of link weights, who
-        hiddenErrors = numpy.dot(self.who.T, errorList)
-        #update the weights for the links between the hidden and output layers
-        self.who += self.lr * numpy.dot((hiddenErrors * finalOutputs * (1.0 - finalOutputs)), numpy.transpose(hiddenOutputs))
-        #update the weights for the links between the input and hidden layers
-        self.wih += self.lr * numpy.dot ((hiddenErrors * hiddenOutputs * (1.0 - hiddenOutputs)), numpy.transpose(inputs))
+        hiddenErrors = numpy.dot(self.who.T, outputErrors) 
+        
+        # update the weights for the links between the hidden and output layers
+        self.who += self.lr * numpy.dot((outputErrors * finalOutputs * (1.0 - finalOutputs)), numpy.transpose(hiddenOutputs))
+        
+        # update the weights for the links between the input and hidden layers
+        self.wih += self.lr * numpy.dot((hiddenErrors * hiddenOutputs * (1.0 - hiddenOutputs)), numpy.transpose(inputs))
+        
         pass
 
+    
+    # query the neural network
+    def query(self, inputsList):
+        # convert inputs list to 2d array
+        inputs = numpy.array(inputsList, ndmin=2).T
+        
+        # calculate signals into hidden layer
+        hiddenInputs = numpy.dot(self.wih, inputs)
+        # calculate the signals emerging from hidden layer
+        hiddenOutputs = self.activationFunction(hiddenInputs)
+        
+        # calculate signals into final output layer
+        finalInputs = numpy.dot(self.who, hiddenOutputs)
+        # calculate the signals emerging from final output layer
+        finalOutputs = self.activationFunction(finalInputs)
+        
+        return finalOutputs
+    
     def display(self):
         print ("input Nodes:" + str(self.inputNodes))
         print("hidden Nodes:" + str(self.hiddenNodes))
         print("output Nodes:" + str(self.outputNodes))
-        print ("learning factor:" + str(self.lf))
+        print ("learning factor:" + str(self.lr))
         print(self.wih)
         print(self.who)
         pass
-
-        
