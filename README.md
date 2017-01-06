@@ -12,7 +12,7 @@
 - [x] write train method
 - [x] updated GUI
 - [x] added main function
-- [ ] clean up code in main()
+- [x] clean up code in main()
 - [ ] format README.md
 
 ![Alt text](/screenshots/usage.png?raw=true "Usage")
