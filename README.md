@@ -1,7 +1,7 @@
 # NeuralNetwork
 ## A neural network built with the purpose of recognizing handwritten characters.
 ###### A brief overview...
-The concepts that underpin neural Networks are both mathematical and cognitive in nature. Mathematical concepts include **elements of linear algebra such as matrix multiplication and the transpose of a matrix, elements of calculus such as the derivative and gradient descent, and elements of algebra such as slope-intercept form** and **cognitive concepts such as a basic understanding of the structure of a neuron.**
+The concepts that underpin neural Networks are both **mathematical and cognitive in nature.** Mathematical concepts include **elements of linear algebra such as matrix multiplication and the transpose of a matrix, elements of calculus such as the derivative and gradient descent, and elements of algebra such as slope-intercept form** and **cognitive concepts such as a basic understanding of the structure of a neuron.**
 
 Computers are effectively extremely fast calculators, which makes them perfect for carrying out calculations.
 Humans brains are technically slower than calculators, yet we are capable of doing things that computers cannot; such as recognizing handwritten characters or even faces.
