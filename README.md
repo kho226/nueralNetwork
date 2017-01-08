@@ -1,18 +1,22 @@
 # NeuralNetwork
 ## A neural network built with the purpose of recognizing handwritten characters.
 ###### A brief overview...
-The concepts that underpin neural Networks are both **mathematical and cognitive in nature.** Mathematical concepts include **elements of linear algebra such as matrix multiplication and the transpose of a matrix, elements of calculus such as the derivative and gradient descent, and elements of algebra such as slope-intercept form** and **cognitive concepts such as a basic understanding of the structure of a neuron.**
+The concepts that underpin neural Networks are both **mathematical and cognitive in nature.** Mathematical concepts include **elements of linear algebra such as matrix multiplication and the transpose of a matrix, elements of calculus such as the derivative and gradient descent, elements of statistics such as the normal distribution and the standard deviation, and elements of algebra such as slope-intercept form** and **cognitive concepts such as a basic understanding of the structure of a neuron.**
 
 Computers are effectively extremely fast calculators, which makes them perfect for carrying out calculations.
 Humans brains are technically slower than calculators, yet we are capable of doing things that computers cannot; such as recognizing handwritten characters or even faces.
 
-NeuralNetworks attempt to bridge the gap between the human brain and computers; allowing us to imbue computers with almost human-like cognitive abilities.
+NeuralNetworks attempt to bridge the gap between the human brain and computers; allowing us to imbue computers with almost human-like cognitive abilities. Such as the ability to effectively teach itself.
 
-The neuron is the most basic building block of intelligent life on earth. Neuron's consist of dendrites, axons and terminals. A dendrite of one neuron will connect to the terminal of another neuron, and within each neuron axons connect dendrites and terminals. Neurons are effectively the circuitry of our brains.
+The neuron is the most basic building block of intelligent life on earth. Neuron's consist of **dendrites, axons and terminals.** A dendrite of one neuron will connect to the terminal of another neuron, and within each neuron axons connect dendrites and terminals. Neurons are effectively the circuitry of our brains. They take an electrical signal as input and output another electrical signal. The output of a neuron does not share a linear relationship with it's input. Instead, a neuron will suppress it's output until the input crosses a threshold. An **activation function** is a function that takes an input signal and generates and output signal, but takes into account some threshold. I will be using the **Sigmoid function** or **logistic function** but there are many other prime candidates.
 
-We can model the neurons of a human brain with a matrix of nodes, where each node in the matrix represents a neuron. Take for example a 2 x 2 matrix of nodes. There is a total of 4 nodes. Each node in the first column has a link to every node in the second column. Each of these links has a weight / probability associated with it as well as an activation function. The activation functions and link weights determine how information travels through the matrix.
+We can model the neurons of a human brain with a matrix of nodes, where each node in the matrix represents a neuron. Take for example a 2 x 2 matrix of nodes. There are a total of 4 nodes. Each node in the first column has a link to every node in the second column. Each of these **links have an associated weight / probability** as well as an **activation function**. The activation functions and link weights determine how information travels through the matrix.
 
-Information can propagate forward and backward through the matrix of nodes. Propagating information forward is
+Information can **propagate forward** and **propagate backward** through the matrix of nodes.
+
+Propagating information forward is carried out by applying the **activation function** to the **dot product** of the **input matrix** and the matrix representing the link weights between the **input layer** and the **hidden layer**. Repeating this algorithm for every matrix of link weights in the network. The resulting matrix we will refer to as the **output Matrix**
+
+Propagating information backwards is carried out in a similar fashion as propagating information forward. Take the **dot product** of the **transpose of the matrix of respective link weights** and the **error matrix**. The **error matrix** is determined by subtracting **output Matrix** from the **matrix of expected values**. The
 
 #TODO...
 - [x] write skeleton of class
