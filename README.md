@@ -16,7 +16,7 @@ Information can **propagate forward** and **propagate backward** through the mat
 
 Propagating information forward is carried out by applying the **activation function** to the **dot product** of the **input matrix** and the matrix representing the link weights between the **input layer** and the **hidden layer**. Repeating this algorithm for every matrix of link weights in the network. The resulting matrix we will refer to as the **output Matrix**
 
-Propagating information backwards is carried out in a similar fashion as propagating information forward. Take the **dot product** of the **transpose of the matrix of respective link weights** and the **error matrix**. The **error matrix** is determined by subtracting **output Matrix** from the **matrix of expected values**. The
+Propagating information backwards is carried out in a similar fashion as propagating information forward. Take the **dot product** of the **transpose of the matrix of respective link weights** and the **error matrix**. The **error matrix** is the difference between the **output Matrix** and the **matrix of expected values**.
 
 #TODO...
 - [x] write skeleton of class
