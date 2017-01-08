@@ -20,7 +20,7 @@ Propagating information backwards is carried out in a similar fashion as propaga
 
 ***A neural network can learn.***
 
-A neural network learns by **adjusting the weights associated with the links**. Link weights are adjusted using **gradient descent**. 
+A neural network learns by **adjusting the weights associated with the links**. Link weights are adjusted using **gradient descent**.
 
 #TODO...
 - [x] write skeleton of class
@@ -34,7 +34,7 @@ A neural network learns by **adjusting the weights associated with the links**. 
 - [x] updated GUI
 - [x] added main function
 - [x] clean up code in main()
-- [ ] format README.md
+- [x] format README.md
 
 ![Alt text](/screenshots/usage.png?raw=true "Usage")
 
