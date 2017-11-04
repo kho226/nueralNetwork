@@ -35,6 +35,7 @@ A neural network learns by **adjusting the weights associated with the links**. 
 - [x] added main function
 - [x] clean up code in main()
 - [x] format README.md
+= []  build a basic website around the network
 
 ![Alt text](/screenshots/usage.png?raw=true "Usage")
 
